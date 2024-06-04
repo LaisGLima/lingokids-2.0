@@ -172,7 +172,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   alimentoName: {
-    fontSize: 16,
+    fontSize: 20,
     fontWeight: 'bold',
     color: 'white',
     textShadowColor: 'black', 
@@ -198,7 +198,7 @@ const styles = StyleSheet.create({
     marginHorizontal: 10,
   },
   paginationText: {
-    fontSize: 16,
+    fontSize: 20,
     fontWeight: 'bold',
     color: 'white',
     marginHorizontal: 10,
