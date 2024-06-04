@@ -172,7 +172,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   coresName: {
-    fontSize: 16,
+    fontSize: 20,
     fontWeight: 'bold',
     color: 'white',
     textShadowColor: 'black', 
@@ -180,10 +180,10 @@ const styles = StyleSheet.create({
     textShadowRadius: 2,
   },
   startIcon: {
-    width: 20, // Ajuste conforme necessário
-    height: 20, // Ajuste conforme necessário
+    width: 20,
+    height: 20,
     resizeMode: 'contain',
-    marginLeft: 5, // Espaçamento entre o nome da cor e o ícone "start"
+    marginLeft: 5, 
   },
   paginationContainer: {
     flexDirection: 'row',
@@ -198,7 +198,7 @@ const styles = StyleSheet.create({
     marginHorizontal: 10,
   },
   paginationText: {
-    fontSize: 16,
+    fontSize: 20,
     fontWeight: 'bold',
     color: 'white',
     marginHorizontal: 10,
