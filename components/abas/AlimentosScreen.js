@@ -137,7 +137,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     flexWrap: 'wrap',
     justifyContent: 'space-around',
-    marginTop: 170,
+    marginTop: 140,
   },
   alimentoButton: {
     alignItems: 'center',
