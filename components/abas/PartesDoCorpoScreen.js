@@ -137,7 +137,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     flexWrap: 'wrap',
     justifyContent: 'space-around',
-    marginTop: 25,
+    marginTop: 170,
   },
   parteDoCorpoButton: {
     alignItems: 'center',
