@@ -24,13 +24,13 @@ const ControleParentalScreen = () => {
   const getMillisecondsUntilLock = (option) => {
     switch (option) {
       case '30m':
-        return 10 * 1000; // 10s
+        return 30 * 60 * 1000;
       case '1h':
-        return 60 * 60 * 1000; // 1h
+        return 60 * 60 * 1000; 
       case '2h':
-        return 2 * 60 * 60 * 1000; // 2h
+        return 2 * 60 * 60 * 1000; 
       case '3h':
-        return 3 * 60 * 60 * 1000; // 3h
+        return 3 * 60 * 60 * 1000; 
       default:
         return 0;
     }
