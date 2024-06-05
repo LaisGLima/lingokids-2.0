@@ -29,7 +29,7 @@
 
 Para configurar o projeto, você precisará instalar as seguintes dependências:
 
-Caso tenha muito tempo que o projeto foi atualizado, precisa-se de atualizar todas as dependências para as ultimas versões, com intuito de que funcione.
+Caso tenha muito tempo que o projeto foi atualizado, precisa-se de atualizar todas as dependências para as ultimas versões.
 
 ### Instalações Obrigatórias 
 
