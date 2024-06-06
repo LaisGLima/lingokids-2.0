@@ -1,81 +1,102 @@
-import React, { useState, useEffect } from 'react';
-import { StyleSheet, View, Image, TouchableOpacity, Animated } from 'react-native';
-import { LinearGradient } from 'expo-linear-gradient'; 
-import VoltarScreen from './VoltarScreen';
-import { useOption } from './OptionContext'; 
-import { useLock } from './LockContext'; 
+import React, { useState, useEffect } from "react";
+import {
+  StyleSheet,
+  View,
+  Image,
+  TouchableOpacity,
+  Animated,
+} from "react-native";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { LinearGradient } from "expo-linear-gradient";
+import VoltarScreen from "./VoltarScreen";
+import { useOption } from "./OptionContext";
+import { useLock } from "./LockContext";
 
 const ControleParentalScreen = () => {
   const { selectedOption, toggleOption } = useOption();
-  const { setIsLocked } = useLock(); 
+  const { setIsLocked } = useLock();
   const [selectedOptionTime, setSelectedOptionTime] = useState(null);
 
-  const renderBallPosition = (option) => selectedOption === option ? 36 : 4;
+  const renderBallPosition = (option) => (selectedOption === option ? 36 : 4);
 
   useEffect(() => {
+    let timeout = null;
     if (selectedOption !== null) {
       setSelectedOptionTime(new Date());
-      setTimeout(() => {
-        setIsLocked(true);
+      timeout = setTimeout(() => {
+        AsyncStorage.setItem("date", new Date().getDate().toString()).then(() =>
+          setIsLocked(true),
+        );
       }, getMillisecondsUntilLock(selectedOption));
     }
+
+    return () => clearTimeout(timeout);
   }, [selectedOption]);
 
   const getMillisecondsUntilLock = (option) => {
     switch (option) {
-      case '30m':
+      case "30m":
         return 30 * 60 * 1000;
-      case '1h':
-        return 60 * 60 * 1000; 
-      case '2h':
-        return 2 * 60 * 60 * 1000; 
-      case '3h':
-        return 3 * 60 * 60 * 1000; 
+      case "1h":
+        return 60 * 60 * 1000;
+      case "2h":
+        return 2 * 60 * 60 * 1000;
+      case "3h":
+        return 3 * 60 * 60 * 1000;
       default:
         return 0;
     }
   };
 
   return (
-    <LinearGradient 
-      colors={['#E9971D', '#F6F89A', '#E9971D']} 
-      style={styles.container}>
+    <LinearGradient
+      colors={["#E9971D", "#F6F89A", "#E9971D"]}
+      style={styles.container}
+    >
       <VoltarScreen />
       <Image
         style={styles.tempoDetela}
-        source={require('../../assets/imagens/tempo.png')}
+        source={require("../../assets/imagens/tempo.png")}
       />
       <View style={styles.controleParentalContainer}>
         <Image
           style={styles.background}
-          source={require('../../assets/imagens/controleParentalContainer.png')}
+          source={require("../../assets/imagens/controleParentalContainer.png")}
         />
         <View style={styles.horasContainer}>
           <Image
             style={styles.trinta}
-            source={require('../../assets/imagens/30m.png')}
+            source={require("../../assets/imagens/30m.png")}
           />
           <Image
             style={styles.uma}
-            source={require('../../assets/imagens/1h.png')}
+            source={require("../../assets/imagens/1h.png")}
           />
           <Image
             style={styles.duas}
-            source={require('../../assets/imagens/2h.png')}
+            source={require("../../assets/imagens/2h.png")}
           />
           <Image
             style={styles.tres}
-            source={require('../../assets/imagens/3h.png')}
+            source={require("../../assets/imagens/3h.png")}
           />
         </View>
         <View style={styles.checkboxContainer}>
-          {['30m', '1h', '2h', '3h'].map((option) => (
+          {["30m", "1h", "2h", "3h"].map((option) => (
             <TouchableOpacity
               key={option}
-              style={[styles.checkbox, { backgroundColor: selectedOption === option ? '#4BD609' : '#FECE00' }]}
+              style={[
+                styles.checkbox,
+                {
+                  backgroundColor:
+                    selectedOption === option ? "#4BD609" : "#FECE00",
+                },
+              ]}
               onPress={() => toggleOption(option)}
             >
-              <Animated.View style={[styles.ball, { left: renderBallPosition(option) }]} />
+              <Animated.View
+                style={[styles.ball, { left: renderBallPosition(option) }]}
+              />
             </TouchableOpacity>
           ))}
         </View>
@@ -87,8 +108,8 @@ const ControleParentalScreen = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
   },
   tempoDetela: {
     marginLeft: 15,
@@ -97,7 +118,7 @@ const styles = StyleSheet.create({
     marginTop: 30,
   },
   controleParentalContainer: {
-    alignItems: 'center',
+    alignItems: "center",
     marginLeft: 15,
     marginTop: 20,
   },
@@ -139,7 +160,7 @@ const styles = StyleSheet.create({
     width: 62,
     height: 32,
     borderRadius: 16,
-    borderColor: 'white',
+    borderColor: "white",
     borderWidth: 3,
     marginBottom: 57,
   },
@@ -147,8 +168,8 @@ const styles = StyleSheet.create({
     width: 25,
     height: 25,
     borderRadius: 13,
-    backgroundColor: 'white',
-    position: 'absolute',
+    backgroundColor: "white",
+    position: "absolute",
   },
 });
 
