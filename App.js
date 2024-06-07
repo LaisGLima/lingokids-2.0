@@ -2,6 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { Audio } from 'expo-av';
+import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
+import * as Font from 'expo-font';
+import { Asset } from 'expo-asset';
+import * as SplashScreen from 'expo-splash-screen';
 
 import ControleParentalScreen from './components/abas/ControleParentalScreen';
 import LinguagensScreen from './components/abas/LinguagensScreen';
@@ -16,11 +20,10 @@ import CoresScreen from './components/abas/CoresScreen';
 import AlimentosScreen from './components/abas/AlimentosScreen';
 
 import { OptionProvider } from './components/abas/OptionContext';
-import LockScreen from './components/abas/LockScreen'; 
-import { LockProvider, useLock } from './components/abas/LockContext'; 
+import LockScreen from './components/abas/LockScreen';
+import { LockProvider, useLock } from './components/abas/LockContext';
 import LanguageProvider from './components/context/LanguageContext';
 
-// Importações do Firebase
 import firebaseApp, { storage, database } from './components/database/dbConfig';
 import { ref, onValue } from '@firebase/database';
 
@@ -28,9 +31,12 @@ const Stack = createStackNavigator();
 
 const App = () => {
   const [sound, setSound] = useState();
-  const [data, setData] = useState(null); // Estado para armazenar os dados do Firebase
+  const [data, setData] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
+    SplashScreen.preventAutoHideAsync();
+    
     let soundObject = null;
 
     const playSound = async () => {
@@ -62,25 +68,51 @@ const App = () => {
     }
   };
 
-  // Lógica para buscar dados do Firebase
   useEffect(() => {
     const dataRef = ref(database, 'bancodedados');
     onValue(dataRef, (snapshot) => {
       const data = snapshot.val();
       setData(data);
+      setIsLoading(false); // Dados carregados, desabilita o carregamento
+      SplashScreen.hideAsync();
     }, (error) => {
       console.error("Error fetching data: ", error);
     });
   }, []);
 
+  const cacheResourcesAsync = async () => {
+    const images = [
+      require('./assets/icon.png'),
+      // adicione outros ícones ou imagens aqui
+    ];
+
+    const cacheImages = images.map(image => {
+      return Asset.fromModule(image).downloadAsync();
+    });
+
+    const cacheFonts = Font.loadAsync({
+      // adicione fontes aqui se necessário
+    });
+
+    await Promise.all([...cacheImages, cacheFonts]);
+  };
+
+  if (isLoading) {
+    return null; // Retorne null para evitar erros de renderização enquanto os recursos estão sendo carregados
+  }
+
   return (
     <LanguageProvider>
       <LockProvider>
         <OptionProvider>
-          <NavigationContainer>
-            <Navigation stopAlarm={stopAlarm} />
-            <ConfiguracaoScreen soundObject={sound} toggleSound={stopAlarm} />
-          </NavigationContainer>
+          <SafeAreaProvider>
+            <SafeAreaView style={{ flex: 1 }}>
+              <NavigationContainer>
+                <Navigation stopAlarm={stopAlarm} />
+                <ConfiguracaoScreen soundObject={sound} toggleSound={stopAlarm} />
+              </NavigationContainer>
+            </SafeAreaView>
+          </SafeAreaProvider>
         </OptionProvider>
       </LockProvider>
     </LanguageProvider>
