@@ -5,7 +5,7 @@
 ### Atividade proposta pelo Prof. Ildo Vieira - Disciplina: Programação Para Dispositivos Móveis em Android - Estácio Parangaba
 
 ## FIGURA 1 – BANNER
-<img src="https://github.com/LaisGLima/LingoKids/blob/main/imagensReadme/BannerLingoKids.jpg" alt="Banner LingoKids" width="600"/>
+<img src="https://github.com/LaisGLima/LingoKids/blob/main/imagensReadme/BannerLK.jpg" alt="Banner LingoKids" width="600"/>
 
 ## FIGURA 2 – TELA INICIAL
 <img src="https://github.com/LaisGLima/LingoKids/blob/main/imagensReadme/Inicial.jpg" alt="Tela Inicial" width="300"/>
