@@ -83,7 +83,6 @@ const App = () => {
   const cacheResourcesAsync = async () => {
     const images = [
       require('./assets/icon.png'),
-      // adicione outros ícones ou imagens aqui
     ];
 
     const cacheImages = images.map(image => {
@@ -91,14 +90,13 @@ const App = () => {
     });
 
     const cacheFonts = Font.loadAsync({
-      // adicione fontes aqui se necessário
     });
 
     await Promise.all([...cacheImages, cacheFonts]);
   };
 
   if (isLoading) {
-    return null; // Retorne null para evitar erros de renderização enquanto os recursos estão sendo carregados
+    return null;
   }
 
   return (
