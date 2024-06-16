@@ -14,15 +14,15 @@
 <img src="https://github.com/LaisGLima/LingoKids/blob/main/imagensReadme/linguagem.jpg" alt="Tela de Linguagem e Configuração" width="300"/>
 
 ## FIGURA 4 – TELA DE CONFIGURAÇÃO DO CONTROLE PARENTAL
-<img src="https://github.com/LaisGLima/LingoKids/blob/main/imagensReadme/notificacao.jpg" alt="Tela de Configuração do Controle Parental" width="300"/>
+<img src="https://github.com/LaisGLima/LingoKids/blob/main/imagensReadme/controleparental.jpg" alt="Tela de Notificação do Controle Parental" width="300"/>
 
 ## FIGURA 5 – TELA DE NOTIFICAÇÃO DO CONTROLE PARENTAL
-<img src="https://github.com/LaisGLima/LingoKids/blob/main/imagensReadme/controleparental.jpg" alt="Tela de Notificação do Controle Parental" width="300"/>
+<img src="https://github.com/LaisGLima/LingoKids/blob/main/imagensReadme/notificacao.jpg" alt="Tela de Configuração do Controle Parental" width="300"/>
 
 ## FIGURA 6 – TELA DE CATEGORIAS
 <img src="https://github.com/LaisGLima/LingoKids/blob/main/imagensReadme/Categorias.jpg" alt="Tela de Categorias" width="300"/>
 
-## FIGURA 7 – TELA DE ANIMAIS EM PORTUGUÊS
+## FIGURA 7 – TELA DE ALIMENTOS EM PORTUGUÊS
 <img src="https://github.com/LaisGLima/LingoKids/blob/main/imagensReadme/TelaAlimentoPT.jpg" alt="Tela de Animais em Português" width="300"/>
 
 ## Dependências
